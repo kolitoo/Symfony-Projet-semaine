@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Description Article{% endblock %}
+
+
+{% block body %}
+<div class="text-center">
+  <h1 class="h1 m-5 p-2"><strong>{{ vehicule.titre }}</strong></h1>
+  <figure>
+    <img src="/upload{{ asset(vehicule.photo)}}" alt="" class="img-fluid img-thumbnail border-dark text-center">
+  </figure>
+  <h2><strong>{{ vehicule.prix }}€</strong></h2>
+  <p>{{ vehicule.description }}</p>
+  <p class="text-left">{{ vehicule.taille }}</p>
+  <p>{{ vehicule.collection }}</p>
+</div>
+
+{% endblock %}

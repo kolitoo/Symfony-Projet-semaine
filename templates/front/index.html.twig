@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}MyShop{% endblock %}
+
+
+{% block body %}
+<h1 class="text-center my-4">MyShop</h1>
+<img src="https://cdn.pixabay.com/photo/2015/10/16/13/47/premium-991221_960_720.jpg" alt="" class="img-fluid w-50 img-thumbnail rounded mx-auto d-block">
+<h2 class="text-center m-4">Articles Disponibles</h2>
+<main>
+<div class="row">
+  {%  for vehicule in vehicules %}
+      <article class="col-3 mb-3">
+          <h2 class="text-center">{{ vehicule.titre }}</h2>
+          <img src="/upload{{ asset(vehicule.photo)}}" alt="" class="img-fluid img-thumbnail border-dark">
+          <footer class="d-flex justify-content-between align-items-center mt-1">
+
+          <a href="{{ path("panier_add" , {"id" : vehicule.id }) }}" class="btn btn-info d-flex justify-content-between align-items-center m-3">
+          Ajouter au panier
+          </a>
+          <span><strong>{{ vehicule.prix }}€</strong></span>
+          <a href="{{ path("description_article", {"id": vehicule.id}) }}" class="btn btn-info d-flex justify-content-between align-items-center m-3">
+          Description Article
+          </a>
+          </footer>  
+      </article>
+      {% else %}
+    <p class="alert alert-danger">aucun article enregistré pour le moment</p>
+    {% endfor %}
+</div>
+</main>
+
+
+{% endblock %}
